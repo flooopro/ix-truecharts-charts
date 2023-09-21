@@ -109,7 +109,7 @@ jobs:
     - name: Checkout Catalog
       uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
       if: |
-        steps.collect-changes.outputs.changesDetectedAfterTag == 'true'
+        steps.collect-changes.outputs.changesDetected == 'true'
       with:
         fetch-depth: 1
         repository: flooopro/ix-truecharts-catalog
@@ -120,7 +120,7 @@ jobs:
     - name: build catalog
       shell: bash
       if: |
-        steps.collect-changes.outputs.changesDetectedAfterTag == 'true'
+        steps.collect-changes.outputs.changesDetected == 'true'
       run: |
         CHARTS=(${{ steps.collect-changes.outputs.modifiedChartsAfterTag }})
         charts_path="charts"
@@ -147,7 +147,7 @@ jobs:
 
     - name: set git author
       if: |
-        steps.collect-changes.outputs.changesDetectedAfterTag == 'true'
+        steps.collect-changes.outputs.changesDetected == 'true'
       shell: bash
       run: |
         git config user.name "TrueCharts-Bot"
