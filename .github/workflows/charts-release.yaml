@@ -20,6 +20,7 @@ jobs:
         uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
         with:
           fetch-depth: 1
+          token: ${{ secrets.BOT_TOKEN }}
 
       - name: Checkout Helm-Staging
         uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4
@@ -27,6 +28,7 @@ jobs:
           fetch-depth: 1
           repository: flooopro/ix-truecharts-helm-staging
           path: helm
+          token: ${{ secrets.BOT_TOKEN }}
 
       - name: Fix Pre-Commit issues
         shell: bash
